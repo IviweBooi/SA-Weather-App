@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePage</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="icon"
+      href="assets/icons/weather_logo.svg"
+      type="image/svg+xml"
+    />
+  </head>
+  <body>
+    <!-- main content -->
+    <main>
+      <section class="hero">
+        <div class="intro-div">
+          <img
+            src="assets/icons/weather_logo.svg"
+            alt="SA Weather App Logo"
+            class="logo"
+          />
+          <h1>SA Weather App</h1>
+          <p class="current-date"></p>
+        </div>
+
+        <div class="search-div">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for a city..."
+            list="cityList"
+            autocomplete="on"
+            aria-label="Search for a city"
+          />
+          <img
+            class="search-icon"
+            src="assets/icons/search-icon.svg"
+            height="15"
+          />
+          <datalist id="cityList">
+            <select>
+              <option>Cape Town</option>
+
+              <option>Johannesburg</option>
+
+              <option>Durban</option>
+
+              <option>Pretoria</option>
+
+              <option>Port Elizabeth</option>
+
+              <option>Bloemfontein</option>
+
+              <option>East London</option>
+
+              <option>Kimberley</option>
+
+              <option>Polokwane</option>
+
+              <option>Rustenburg</option>
+            </select>
+          </datalist>
+          <button id="search-button" aria-label="Search">
+            <img src="assets/icons/search-icon.svg" height="16" />
+          </button>
+          <button id="location-button" aria-label="Use current location">
+            <img src="assets/icons/location-icon.svg" height="18" />
+          </button>
+        </div>
+        <div class="weather-info">
+          <div class="loader"></div>
+          <p>Loading weather data...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="copy-right">&copy; 2025 SA Weather App. All rights reserved.</p>
+      <p>
+        Data provided by:
+        <a href="https://openweathermap.org/" target="_blank">OpenWeather</a>
+        and
+        <a href="https://www.citypopulation.de/en/world/cities/" target="_blank"
+          >City API</a
+        >
+      </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
