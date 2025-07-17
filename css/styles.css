@@ -21,12 +21,12 @@
   --secondary-color: #2ecc71;
   --body-bg: linear-gradient(
     135deg,
-    rgb(176, 184, 255),
-    #6e96fb,
-    #824af2,
-    #a57fef,
-    #f34e79,
-    #ff6d05
+    #c5ceff,
+    #889eff,
+    #7080ff,
+    #7c6cff,
+    #a565e8,
+    #db5d8d
   );
   --text-color: #fefdfe;
   --h-font: "Poppins", sans-serif;
@@ -47,6 +47,7 @@ body {
   height: 100vh;
   width: 100%;
   padding: 20px;
+  overflow-x: hidden;
 }
 .hero {
   background-color: transparent;
@@ -79,11 +80,13 @@ body {
   color: var(--text-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 5px;
+  letter-spacing: -1px;
 }
 .intro-div p {
   font-family: var(--p-font);
   font-size: var(--md-size);
   color: var(--text-color);
+  letter-spacing: 0px;
 }
 
 .search-div {
@@ -152,7 +155,8 @@ body {
 }
 
 #search-button:hover,
-#search-button:active {
+#search-button:active,
+#search-button:focus {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: var(--shadow-hover);
 }
@@ -174,7 +178,8 @@ body {
 }
 
 #location-button:hover,
-#location-button:active {
+#location-button:active,
+#location-button:focus {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: var(--shadow-hover);
 }
