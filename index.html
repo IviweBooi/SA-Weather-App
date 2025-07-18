@@ -11,7 +11,24 @@
       type="image/svg+xml"
     />
   </head>
-  <body>
+  <body >
+    <header>
+      <theme-toggle-button>
+        <img
+          src="assets/icons/sun-icon.svg"
+          alt="Light Mode Icon"
+          class="light-icon"
+          height="20"
+
+        />
+        <img
+          src="assets/icons/moon-icon.svg"
+          alt="Dark Mode Icon"
+          class="dark-icon"
+          height="20"
+        />
+      </theme-toggle-button>
+    </header>
     <!-- main content -->
     <main>
       <section class="hero">
@@ -71,8 +88,116 @@
         </div>
         <div class="weather-info">
           <div class="loader"></div>
-          <p>Loading weather data...</p>
+          <div class="upper-div">
+            <div class="location-units-div">
+              <h2>Cape Town</h2>
+              <select>
+                <option value="metric">°C</option>
+                <option value="imperial">°F</option>
+              </select>
+            </div>
+            <div class="time-div">
+              <p class="current-time">12:00 PM</p>
+            </div>
+            <div class="weather-div">
+              <img
+                src="assets/icons/sun.png"
+                alt="Weather Icon"
+                class="weather-icon"
+              />
+              <h1 class="temperature">25<sup>°C</sup></h1>
+              <div class="weather-details">
+                <p class="weather-description">Sunny</p>
+                <p class="feels-like">Feels like 27°C</p>
+              </div>
+            </div>
+            <div class="additional-info-div">
+              <p class="additional-info">There will be mostly sunny skies.</p>
+            </div>
+          </div>
+          <div class="additional-weather-info-div">
+            <div class="wind-div">
+              <div class="icon-div">
+                <img src="assets/icons/wind-icon.svg" alt="Wind icon" height="20"/>
+                <p>Wind</p>
+              </div>
+              <h2>12 Km/H</h2>
+            </div>
+            <div class="humidity-div">
+              <div class="icon-div">
+                <img src="assets/icons/humidity-icon.svg" alt="Humidity icon" height="20"/>
+                <p>Humidity</p>
+              </div>
+              <h2>45%</h2>
+            </div>
+            <div class="pressure-div">
+              <div class="icon-div">
+                <img src="assets/icons/pressure-icon.svg" alt="Pressure icon" height="20"/>
+                <p>Pressure</p>
+              </div>
+              <h2>1010 hPa</h2>
+            </div>
+            <div class="visibility-div">
+              <div class="icon-div">
+                <img src="assets/icons/visibility-icon.svg" alt="Visibility icon" height="20"/>
+                <p>Visibility</p>
+              </div>
+              <h2>10 Km</h2>
+            </div>
+            <div class="wind-dir-div">
+              <div class="icon-div">
+                <img src="assets/icons/direction.svg" alt="Wind direction icon" height="18"/>
+                <p>Wind Direction</p>
+              </div>
+              <h2>120°</h2>
+            </div>
+            <div class="sunset-sunrise-div">
+              <div class="icon-div">
+                <img src="assets/icons/sunrise-icon.svg" alt="sunrise icon" height="20"/>
+                <p>Sun Summary</p>
+              </div>
+              <div class="sunrise-sunset-inner-div">
+                <div class="sunrise-div">
+                  <p>Sunrise</p>
+                  <p>06:00 AM</p>
+                </div>
+                <div class="sunset-div">
+                  <p>Sunset</p>
+                  <p>07:00 PM</p>
+                </div>  
+              </div>
+            </div>
+          </div>
+          <div class="five-day-forecast-div">
+            <div class="weather-forecast-div">
+              <p class="forecast-day">Monday</p>
+              <h2 class="forecast-temp">25°C</h2>
+              <img src="assets/icons/sun.png" alt="Weather Icon" class="forecast-icon" height="50" />
+            </div>
+            <div class="weather-forecast-div">
+              <p class="forecast-day">Tuesday</p>
+              <h2 class="forecast-temp">15°C</h2>
+              <img src="assets/icons/partly-coudy.png" alt="Weather Icon" class="forecast-icon" height="50" />
+            </div>
+            <div class="weather-forecast-div">
+              <p class="forecast-day">Wednesday</p>
+              <h2 class="forecast-temp">10°C</h2>
+              <img src="assets/icons/rain.png" alt="Weather Icon" class="forecast-icon" height="50" />
+            </div>
+            <div class="weather-forecast-div">
+              <p class="forecast-day">Thursday</p>
+              <h2 class="forecast-temp">6°C</h2>
+              <img src="assets/icons/storm.png" alt="Weather Icon" class="forecast-icon" height="50" />
+            </div>
+            <div class="weather-forecast-div">
+              <p class="forecast-day">Friday</p>
+              <h2 class="forecast-temp">-2°C</h2>   
+              <img src="assets/icons/snowflake.png" alt="Weather Icon" class="forecast-icon" height="50" />
+            </div>
+          </div>
         </div>
+        
+             
       </section>
     </main>
 
@@ -82,7 +207,7 @@
         Data provided by:
         <a href="https://openweathermap.org/" target="_blank">OpenWeather</a>
         and
-        <a href="https://www.api-ninjas.com/api/city" target="_blank"
+        <a href="https://www.citypopulation.de/en/world/cities/" target="_blank"
           >City API</a
         >
       </p>

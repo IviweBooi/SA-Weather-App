@@ -11,7 +11,11 @@ const handleCitySearch = (cityName) => {
   if (cityName) {
     fetchCityData(cityName); // Call the function to fetch city data
   } else {
-    alert("Please enter a city name."); //debugging purposes
+    const redSearchInput = document.querySelector("#search-input");
+    redSearchInput.style.border = "1px solid red"; // Change border color to red
+    setTimeout(() => {
+      redSearchInput.style.border = ""; // Reset border color after 1 second
+    }, 1500);
   }
 };
 
@@ -29,4 +33,42 @@ button.addEventListener("click", () => {
   const cityName = document.querySelector("#search-input").value;
   console.log(cityName); // Log the city name for debugging
   handleCitySearch(cityName); // Call the function to handle city search
+});
+
+
+// Select essential elements from the DOM
+const themeToggleButton = document.querySelector("theme-toggle-button");
+const body = document.body;
+const lightIcon = document.querySelector(".light-icon");
+const darkIcon = document.querySelector(".dark-icon");
+
+/**
+ * Applies the specified theme and updates icon visibility.
+ * @param {string} theme - The theme to apply ('dark' or 'light').
+ */
+const applyTheme = (theme) => {
+  if (theme === "dark") {
+    body.classList.add("dark-theme");
+    lightIcon.style.display = "none";
+    darkIcon.style.display = "inline-block";
+  } else {
+    body.classList.remove("dark-theme");
+    lightIcon.style.display = "inline-block";
+    darkIcon.style.display = "none";
+  }
+};
+
+// Apply the saved theme on initial page load
+const savedTheme = localStorage.getItem("theme") || "light"; // Default to light theme
+applyTheme(savedTheme);
+
+// Add event listener to the theme toggle button
+themeToggleButton.addEventListener("click", () => {
+  const isDarkTheme = body.classList.contains("dark-theme");
+  const newTheme = isDarkTheme ? "light" : "dark";
+  
+  applyTheme(newTheme);
+  
+  // Save the new theme to localStorage
+  localStorage.setItem("theme", newTheme);
 });
