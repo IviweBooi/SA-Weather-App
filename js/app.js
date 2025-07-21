@@ -57,9 +57,20 @@ const applyTheme = (theme) => {
   }
 };
 
+// Function to determine the current theme based on time
+const setAutomaticTheme = () => {
+  const currentHour = new Date().getHours();
+  const theme = currentHour >= 6 && currentHour < 18 ? "light" : "dark"; // Daytime from 6 AM to 6 PM
+  applyTheme(theme);
+};
+
 // Apply the saved theme on initial page load
-const savedTheme = localStorage.getItem("theme") || "light"; // Default to light theme
-applyTheme(savedTheme);
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  applyTheme(savedTheme);
+} else {
+  setAutomaticTheme(); // Set theme based on time if no saved theme
+}
 
 // Add event listener to the theme toggle button
 themeToggleButton.addEventListener("click", () => {
@@ -71,4 +82,3 @@ themeToggleButton.addEventListener("click", () => {
   // Save the new theme to localStorage
   localStorage.setItem("theme", newTheme);
 });
-

@@ -1,4 +1,5 @@
 import { weatherApiKey } from "./apiKeys.js"; // Import the weather API key
+
 var map;
 var currentWeatherLayer;
 
