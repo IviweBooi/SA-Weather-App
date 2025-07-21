@@ -284,6 +284,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: stretch;
   gap: 20px;
 }
 .loader {
@@ -339,9 +340,8 @@ body {
   color: white;
   font-family: var(--p-font);
   font-size: 14px;
-  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.3);
   padding: 10px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
@@ -431,10 +431,8 @@ body {
 }
 
 .wind-div {
-  background-color: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 5px;
-  box-shadow: 0 1px 4px  rgba(0,0,0,0.2) inset;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -447,10 +445,8 @@ body {
 }
 
 .humidity-div {
-  background-color: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 5px;
-  box-shadow: 0 1px 4px  rgba(0,0,0,0.2) inset;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -463,10 +459,8 @@ body {
 }
 
 .pressure-div {
-  background-color: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 5px;
-  box-shadow: 0 1px 4px  rgba(0,0,0,0.2) inset;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -479,10 +473,8 @@ body {
 }
 
 .visibility-div {
-  background-color: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 5px;
-  box-shadow: 0 1px 4px  rgba(0,0,0,0.2) inset;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -495,10 +487,8 @@ body {
 }
 
 .wind-dir-div {
-  background-color: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 5px;
-  box-shadow: 0 1px 4px  rgba(0,0,0,0.2) inset;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -511,10 +501,8 @@ body {
 }
 
 .sunset-sunrise-div {
-  background-color: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 5px;
-  box-shadow: 0 1px 4px  rgba(0,0,0,0.2) inset;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -563,18 +551,14 @@ body {
 }
 .five-day-forecast-div {
   border-radius: 20px;
-  height: 200px;
-  grid-column: span 6;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  box-shadow: 0px 0px 10px  rgba(255,255,255,0.2) inset;
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 20px;
-  padding: 20px;
 }
 
 .weather-forecast-div {
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -593,8 +577,27 @@ body {
   color: var(--text-color);
   font-size: 14px;
   font-weight: 300;
+  padding: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+.weather-forecast-div h2{
+  font-family: var(--h-font);
+  color: var(--text-color);
+  font-size: 25px;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+
+.weather-forecast-div img {
+  width: 50px;
+}
+
+.weather-forecast-div sup{
+  font-size: 0.5em;
+  vertical-align: super;
+  color: var(--text-color);
+}
 .error-message {
   font-family: var(--p-font);
   color: var(--text-color);
@@ -633,67 +636,4 @@ footer a {
   transition: var(--transition);
 }
 
-/* media queries for responsiveness */
-@media (max-width: 700px) {
-  .search-div {
-    width: 500px;
-  }
-  .intro-div img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .intro-div h1 {
-    font-size: 36px;
-  }
-  .intro-div p {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 450px) {
-  .search-div {
-    width: 370px;
-  }
-  .intro-div img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .intro-div h1 {
-    font-size: 36px;
-  }
-  .intro-div p {
-    font-size: 14px;
-  }
-  .footer p {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 376px) {
-  .search-div {
-    width: 300px;
-  }
-  .intro-div img {
-    width: 70px;
-    height: 70px;
-  }
-  .search-div input {
-    width: 100%;
-    font-size: 10px;
-  }
-  .search-div input::placeholder {
-    font-size: 10px;
-  }
-
-  .intro-div h1 {
-    font-size: 32px;
-  }
-  .intro-div p {
-    font-size: 12px;
-  }
-  .footer p {
-    font-size: 10px;
-  }
-}
+/* media queries for responsiveness: yet to be implemented */

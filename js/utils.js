@@ -158,3 +158,26 @@ export function unexpectedErrors(){
     </div>
   `
 }
+
+
+/**
+ * Converts a date string in 'YYYY-MM-DD' format to the day of the week or "Today".
+ * @param {string} dateString - The date string in 'YYYY-MM-DD' format.
+ * @returns {string} - The day of the week (e.g., 'Monday') or 'Today'.
+ */
+export function getDayFromDate(dateString) {
+    const date = new Date(dateString);
+    const today = new Date();
+
+    // Normalize both dates to remove time
+    date.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    // Check if the date is today
+    if (date.getTime() === today.getTime()) {
+        return "Today";
+    }
+
+    const options = { weekday: 'long' }; // Use 'long' for full name (e.g., 'Monday')
+    return date.toLocaleDateString('en-US', options);
+}

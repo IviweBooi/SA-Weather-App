@@ -7,30 +7,40 @@ import { unexpectedErrors } from "./utils.js";
 
 // Function to fetch weather data based on latitude and longitude
 export function fetchData(lat, lon, cityName) {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${weatherApiKey}` // Use the weather API key
-  )
-    .then((response) => {
-      if (!response.ok) {
+  return new Promise((resolve, reject) => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${weatherApiKey}` // Use the weather API key
+    )
+      .then((response) => {
+        if (!response.ok) {
+          unexpectedErrors(); // Call the function to display an unexpected error message
+          throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Process the weather data here
+        displayWeatherData(data, cityName); // Call the function to display weather data
+        resolve(data); // Resolve the promise with the weather data
+      })
+      .catch((error) => {
         unexpectedErrors(); // Call the function to display an unexpected error message
-        throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Process the weather data here
-      displayWeatherData(data, cityName); // Call the function to display weather data
-    })
-    .catch((error) => {
-      unexpectedErrors(); // Call the function to display an unexpected error message
-      document.querySelector("#map").style.display = 'none';
-      throw new Error(error);
-    });
+        document.querySelector("#map").style.display = 'none';
+        reject(error); // Reject the promise with the error
+        throw new Error(error);
+      });
+  });
 }
+
+
 
 // parse through the weather data and display it on the page
 function displayWeatherData(data, cityName) {
   // Get the weather container element
+  // if cityName is not provided, use the city name from the data
+  if (!cityName){
+    cityName = data.name;
+  }
   const weatherContainer = document.querySelector(".weather-container");
   const mainWeather = `
     <div class="upper-div">
@@ -113,33 +123,6 @@ function displayWeatherData(data, cityName) {
           </div>
       </div>
       </div>
-      <div class="five-day-forecast-div">
-      <div class="weather-forecast-div">
-          <p class="forecast-day"></p>
-          <h2 class="forecast-temp"></h2>
-          <div class=img"></div>
-      </div>
-      <div class="weather-forecast-div">
-          <p class="forecast-day"></p>
-          <h2 class="forecast-temp"></h2>
-          <div class=img"></div>
-      </div>
-      <div class="weather-forecast-div">
-          <p class="forecast-day"></p>
-          <h2 class="forecast-temp"></h2>
-          <div class=img"></div>
-      </div>
-      <div class="weather-forecast-div">
-          <p class="forecast-day"></p>
-          <h2 class="forecast-temp"></h2>
-          <div class=img"></div>
-      </div>
-      <div class="weather-forecast-div">
-          <p class="forecast-day"></p>
-          <h2 class="forecast-temp"></h2>   
-          <div class=img"></div>
-      </div>
-    </div>
   `;
 
     weatherContainer.innerHTML = mainWeather;
