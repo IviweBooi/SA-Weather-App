@@ -31,7 +31,6 @@ let button = document.querySelector("#search-button");
 // Add click event listener to the search button
 button.addEventListener("click", () => {
   const cityName = document.querySelector("#search-input").value;
-  console.log(cityName); // Log the city name for debugging
   handleCitySearch(cityName); // Call the function to handle city search
 });
 
@@ -72,3 +71,4 @@ themeToggleButton.addEventListener("click", () => {
   // Save the new theme to localStorage
   localStorage.setItem("theme", newTheme);
 });
+
