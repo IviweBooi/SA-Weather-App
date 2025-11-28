@@ -32,15 +32,18 @@ export function fecthFiveDayForecastData(lat, lon) {
 
 // Function to display weather data on the webpage
 function displayWeatherData(data2) {
-    let weatherData = data2;
-    let weatherContainer = document.querySelector(".weather-container");
+    const weatherData = data2;
+    const weatherContainer = document.querySelector(".weather-container");
     let fiveDays = `<div class="five-day-forecast-div">`;
 
-    // Loop through the first five forecast days
-    for (let index = 0; index <= 5; index++) {
-        const date = weatherData.forecast.forecastday[index].date;
-        const forecastTemp = weatherData.forecast.forecastday[index].day.maxtemp_c;
-        const forecastImg = weatherData.forecast.forecastday[index].day.condition.icon;
+    // Safely access forecast days and cap at 5 cards
+    const days = weatherData?.forecast?.forecastday ?? [];
+    const maxCards = Math.min(days.length, 5);
+
+    for (let index = 0; index < maxCards; index++) {
+        const date = days[index].date;
+        const forecastTemp = days[index].day.maxtemp_c;
+        const forecastImg = days[index].day.condition.icon;
 
         fiveDays += `
             <div class="weather-forecast-div">
