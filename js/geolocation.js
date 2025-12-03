@@ -93,3 +93,44 @@ export function storeDataInLocalStorage(cityName, lat, lon) {
   };
   localStorage.setItem(cityName, JSON.stringify(cityData));
 }
+
+// Fetch weather using the user's current geolocation
+export function fetchCurrentLocationWeather() {
+  return new Promise((resolve, reject) => {
+    try {
+      if (!("geolocation" in navigator)) {
+        unexpectedErrors();
+        document.querySelector("#map").style.display = "none";
+        return reject(new Error("Geolocation not supported"));
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude: lat, longitude: lon } = position.coords;
+          fetchData(lat, lon) // cityName inferred from API response
+            .then(() => {
+              fecthFiveDayForecastData(lat, lon);
+              document.querySelector("#map").style.display = "block";
+              setMapView(lat, lon);
+              resolve();
+            })
+            .catch((error) => {
+              unexpectedErrors();
+              document.querySelector("#map").style.display = "none";
+              reject(error);
+            });
+        },
+        (error) => {
+          unexpectedErrors();
+          document.querySelector("#map").style.display = "none";
+          reject(error);
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
+    } catch (error) {
+      unexpectedErrors();
+      document.querySelector("#map").style.display = "none";
+      reject(error);
+    }
+  });
+}

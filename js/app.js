@@ -1,5 +1,5 @@
 import { getCurrentDateTime } from "./utils.js";
-import { fetchCityData } from "./geolocation.js";
+import { fetchCityData, fetchCurrentLocationWeather } from "./geolocation.js";
 
 // displays the current date and time.
 const currentDate = document.querySelector(".current-date");
@@ -32,6 +32,17 @@ let button = document.querySelector("#search-button");
 button.addEventListener("click", () => {
   const cityName = document.querySelector("#search-input").value;
   handleCitySearch(cityName); // Call the function to handle city search
+});
+
+// Location button: fetch weather using current device location
+const locationButton = document.querySelector("#location-button");
+locationButton.addEventListener("click", async () => {
+  try {
+    locationButton.disabled = true;
+    await fetchCurrentLocationWeather();
+  } finally {
+    locationButton.disabled = false;
+  }
 });
 
 
