@@ -636,4 +636,153 @@ footer a {
   transition: var(--transition);
 }
 
-/* media queries for responsiveness: yet to be implemented */
+/* Mobile-only redesign: preserves desktop styles, overrides for small screens */
+@media (max-width: 640px) {
+  /* Global */
+  body {
+    padding: 10px;
+  }
+  header {
+    height: 50px;
+    padding: 8px 12px;
+    justify-content: flex-end;
+  }
+  .hero {
+    padding: 0 10px 10px;
+    gap: 12px;
+  }
+
+  /* Intro */
+  .intro-div {
+    gap: 8px;
+    text-align: center;
+  }
+  .intro-div .logo {
+    width: 48px;
+    height: auto;
+  }
+  .intro-div h1 {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  .current-date {
+    font-size: 12px;
+  }
+
+  /* Search */
+  .search-div {
+    position: relative;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  .search-div .search-icon {
+    display: none; /* Use button icons on mobile */
+  }
+  .search-div input {
+    width: 100%;
+    padding: 12px 12px 12px 36px;
+    font-size: 16px;
+  }
+  #search-button,
+  #location-button {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px;
+    border-radius: 10px;
+  }
+  #search-button img,
+  #location-button img {
+    height: 18px;
+  }
+
+  /* Weather container & primary card */
+  .weather-container {
+    width: 100%;
+    padding: 12px;
+    gap: 16px;
+  }
+  .upper-div {
+    padding: 12px;
+  }
+  .location-units-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .location-units-div h2 {
+    font-size: 18px;
+  }
+  .location-units-div select {
+    font-size: 14px;
+    padding: 6px 8px;
+    border-radius: 8px;
+  }
+  .time-div {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .weather-div {
+    align-items: center;
+    text-align: center;
+  }
+  .weather-div img {
+    width: 64px;
+  }
+  .weather-div h1 {
+    font-size: 36px;
+  }
+
+  /* Additional metrics grid */
+  .additional-weather-info-div {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    height: auto;
+  }
+  .wind-div,
+  .humidity-div,
+  .pressure-div,
+  .visibility-div,
+  .wind-dir-div,
+  .sunset-sunrise-div {
+    font-size: 13px;
+  }
+
+  /* Forecast cards: horizontal scroll */
+  .five-day-forecast-div {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(130px, 1fr);
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .weather-forecast-div {
+    min-width: 130px;
+  }
+
+  /* Map */
+  #map {
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+  }
+  #weather-layers-select {
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 12px;
+    padding: 12px;
+  }
+}
